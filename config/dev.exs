@@ -1,7 +1,7 @@
 use Mix.Config
 
 # Configure the event store database
-config :eventstore, EventStore.Storage,
+config :sec_sitter, SecSitter.EventStore,
   serializer: Commanded.Serialization.JsonSerializer,
   username: "postgres",
   password: "postgres",
@@ -10,8 +10,6 @@ config :eventstore, EventStore.Storage,
   pool_size: 10
 
 # Configure the read store database
-
-# Configure your database
 config :sec_sitter, SecSitter.Repo,
   username: "postgres",
   password: "postgres",

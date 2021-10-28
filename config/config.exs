@@ -8,7 +8,8 @@
 use Mix.Config
 
 config :sec_sitter,
-  ecto_repos: [SecSitter.Repo]
+  ecto_repos: [SecSitter.Repo],
+  event_stores: [SecSitter.EventStore]
 
 # Configures the endpoint
 config :sec_sitter, SecSitterWeb.Endpoint,
