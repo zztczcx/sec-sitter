@@ -28,9 +28,12 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 
-
+# configures Commanded 
 config :commanded,
   event_store_adapter: Commanded.EventStore.Adapters.EventStore
+
+config :commanded_ecto_projections,
+  repo: SecSitter.Repo
 
 
 
