@@ -11,6 +11,23 @@ config :sec_sitter,
   ecto_repos: [SecSitter.Repo],
   event_stores: [SecSitter.EventStore]
 
+# configures Commanded 
+config :sec_sitter, SecSitter.App,
+  event_store: [
+    adapter: Commanded.EventStore.Adapters.EventStore,
+    event_store: SecSitter.EventStore
+  ],
+  pub_sub: :local,
+  registry: :local
+
+config :commanded,
+  event_store_adapter: Commanded.EventStore.Adapters.EventStore
+
+config :commanded_ecto_projections,
+  repo: SecSitter.Repo
+
+
+
 # Configures the endpoint
 config :sec_sitter, SecSitterWeb.Endpoint,
   url: [host: "localhost"],
@@ -26,15 +43,6 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
-
-
-# configures Commanded 
-config :commanded,
-  event_store_adapter: Commanded.EventStore.Adapters.EventStore
-
-config :commanded_ecto_projections,
-  repo: SecSitter.Repo
-
 
 
 

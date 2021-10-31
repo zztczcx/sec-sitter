@@ -7,6 +7,9 @@ defmodule SecSitter.Application do
 
   def start(_type, _args) do
     children = [
+      # Commanded application
+      SecSitter.App,
+
       # Start the Ecto repository
       SecSitter.Repo,
       # Start the Telemetry supervisor
@@ -14,9 +17,12 @@ defmodule SecSitter.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: SecSitter.PubSub},
       # Start the Endpoint (http/https)
-      SecSitterWeb.Endpoint
+      SecSitterWeb.Endpoint,
       # Start a worker by calling: SecSitter.Worker.start_link(arg)
       # {SecSitter.Worker, arg}
+
+      # Start supervisor for projectors to listen to events
+      SecSitter.Portfolio.Supervisor
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
