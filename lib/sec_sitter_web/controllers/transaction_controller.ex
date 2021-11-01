@@ -1,6 +1,9 @@
 defmodule SecSitterWeb.TransactionController do
   use SecSitterWeb, :controller
 
+  alias SecSitter.Portfolio
+  alias SecSitter.Portfolio.Projections.Share
+
   def new(conn, _params) do
     render(conn, "new.html")
   end

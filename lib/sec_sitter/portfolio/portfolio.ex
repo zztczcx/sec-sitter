@@ -8,20 +8,10 @@ defmodule SecSitter.Portfolio do
   alias SecSitter.Portfolio.Projections.Share
 
   def buy_share(order_params) do
-    uuid = UUID.uuid4()
-    dispatch_result = %BuyShare{
-      share_uuid: uuid,
-      unit: 1,
-      ticker: "ANZ",
-      price: 24.5,
-      brokrage: 2.8,
-      executed_at: "2021/10/12",
-    } 
-    |> App.dispatch()
-
-    case dispatch_result do
-      :ok -> 
-        {:ok, %Share{uuid: uuid}}
+    command = order_params |> BuyShare.new  
+    with :ok <- App.dispatch(command) do
+      {:ok, %Share{uuid: uuid}}
+    else
       reply -> reply
     end
   end

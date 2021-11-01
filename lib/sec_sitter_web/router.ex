@@ -20,6 +20,8 @@ defmodule SecSitterWeb.Router do
 
     get "/transactions/new", TransactionController, :new
     post "/transactions/import", TransactionController, :import
+
+    get "/portfolios", PortfolioController, :index
   end
 
   # Other scopes may use custom stacks.

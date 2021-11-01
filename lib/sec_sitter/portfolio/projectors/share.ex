@@ -8,6 +8,7 @@ defmodule SecSitter.Portfolio.Projectors.Share do
   alias SecSitter.Portfolio.Projections.Share
 
   project(%ShareBought{} = event, _metadata, fn multi ->
+      
       Ecto.Multi.insert(multi, :share_bought, %Share{ticker: "ANZ", uuid: event.share_uuid})
     end
   )
