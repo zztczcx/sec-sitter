@@ -10,7 +10,9 @@ defmodule SecSitter.Portfolio.Supervisor do
   def init(_arg) do
     Supervisor.init(
       [
-        Portfolio.Projectors.Share
+        Portfolio.Projectors.Share,
+
+        worker(Portfolio.ProcessManagers.ExecuteShareOrder, [], id: :execute_share_order)
       ],
       strategy: :one_for_one
     )

@@ -8,12 +8,14 @@ defmodule SecSitter.Portfolio.Aggregates.Share do
             credit: 0
 
   alias __MODULE__
-  alias SecSitter.Portfolio.Commands.BuyShare 
-  alias SecSitter.Portfolio.Events.ShareBought
+  alias SecSitter.Portfolio.Commands.ExecuteShareOrder 
+  alias SecSitter.Portfolio.Events.ShareOrderExecuted
 
+  #buy_share command is routed to this aggregates method
   def execute(
-    %Share{uuid: nil},
-    %BuyShare{
+    %Share{uuid: uuid},
+    %ExecuteShareOrder{
+        order_uuid: order_uuid,
         share_uuid: share_uuid,
         unit: unit,
         price: price,
@@ -22,7 +24,8 @@ defmodule SecSitter.Portfolio.Aggregates.Share do
         executed_at: executed_at
     }
   ) do
-    %ShareBought{
+    %ShareOrderExecuted{
+        order_uuid: order_uuid,
         share_uuid: share_uuid,
         unit: unit,
         price: price,
@@ -34,7 +37,7 @@ defmodule SecSitter.Portfolio.Aggregates.Share do
   
   def apply(
     %Share{} = share,
-    %ShareBought{
+    %ShareOrderExecuted{
       share_uuid: share_uuid,
       unit: unit,
       price: price,
