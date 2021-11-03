@@ -1,4 +1,4 @@
-defmodule SecSitterWeb.TransactionController do
+defmodule SecSitterWeb.PortfolioController do
   use SecSitterWeb, :controller
 
   alias SecSitter.Portfolio

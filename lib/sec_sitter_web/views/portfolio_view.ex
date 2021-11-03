@@ -1,4 +1,4 @@
-defmodule SecSitterWeb.PageView do
+defmodule SecSitterWeb.PortfolioView do
   use SecSitterWeb, :view
 
   def render("index.html", assigns) do
