@@ -50,6 +50,8 @@ defmodule SecSitter.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
 
+      {:csv, "~> 2.4.1"},
+
       {:commanded, "~> 1.3"},
       {:eventstore, "~> 1.3"},
       {:commanded_eventstore_adapter, "~> 1.2"}

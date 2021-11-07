@@ -17,6 +17,9 @@ defmodule SecSitterWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    get "/transactions/new", TransactionController, :new
+    post "/transactions/import", TransactionController, :import
   end
 
   # Other scopes may use custom stacks.

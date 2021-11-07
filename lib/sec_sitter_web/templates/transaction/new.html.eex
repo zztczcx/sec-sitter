@@ -1,0 +1,7 @@
+<h1>Upload file</h1>
+<%= form_for @conn, Routes.transaction_path(@conn, :import), [multipart: true], fn f -> %>
+  <%= file_input f, :csv, accept: ".csv", required: true %>
+  <div>
+    <%= submit "Import transactions" %>
+  </div>
+<% end %>
